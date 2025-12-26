@@ -89,14 +89,14 @@ jobs:
           port: 22
           script: |
             # Pull the latest image (package must be public)
-            docker pull ghcr.io/momo2momoa/checkgold:latest
+            sudo docker pull ghcr.io/momo2momoa/checkgold:latest
             
             # Stop and remove existing container
-            docker stop gold-price-api || true
-            docker rm gold-price-api || true
+            sudo docker stop gold-price-api || true
+            sudo docker rm gold-price-api || true
             
             # Run new container
-            docker run -d \
+            sudo docker run -d \
               --name gold-price-api \
               --restart unless-stopped \
               -p 3000:3000 \
@@ -104,7 +104,7 @@ jobs:
               ghcr.io/momo2momoa/checkgold:latest
             
             # Clean up old images
-            docker image prune -f
+            sudo docker image prune -f
             
             echo "✅ Deployment successful!"
 
