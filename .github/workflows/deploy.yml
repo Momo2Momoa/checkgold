@@ -14,6 +14,10 @@ env:
   DOCKER_IMAGE: gold-price-api
   DOCKER_REGISTRY: ghcr.io
 
+permissions:
+  contents: read
+  packages: write
+
 jobs:
   # ============================================
   # Build & Push Docker Image to GitHub Container Registry
