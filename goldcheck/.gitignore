@@ -1,0 +1,45 @@
+# Dependencies
+node_modules
+
+# Environment Variables (⚠️ IMPORTANT: Contains secrets!)
+.env
+.env.local
+.env.production
+.env.development
+.env.staging
+.env.*.local
+
+# Build outputs
+dist
+build
+.next
+out
+
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+
+# Testing
+coverage/
+.nyc_output/
+
+# Misc
+*.tsbuildinfo
+next-env.d.ts
+.vercel
