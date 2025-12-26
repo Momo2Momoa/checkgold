@@ -88,11 +88,8 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           port: 22
           script: |
-            # Login to GitHub Container Registry
-            echo ${{ secrets.GHCR_TOKEN }} | docker login ghcr.io -u ${{ github.actor }} --password-stdin
-            
-            # Pull the latest image
-            docker pull ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:latest
+            # Pull the latest image (package must be public)
+            docker pull ghcr.io/momo2momoa/checkgold:latest
             
             # Stop and remove existing container
             docker stop gold-price-api || true
@@ -104,7 +101,7 @@ jobs:
               --restart unless-stopped \
               -p 3000:3000 \
               -e NODE_ENV=production \
-              ${{ env.DOCKER_REGISTRY }}/${{ github.repository }}:latest
+              ghcr.io/momo2momoa/checkgold:latest
             
             # Clean up old images
             docker image prune -f
